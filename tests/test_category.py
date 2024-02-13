@@ -4,7 +4,9 @@ from src.category import Category
 
 @pytest.fixture()
 def class_product():
-    return Category("Смартфоны", "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни", ["Samsung Galaxy C23 Ultra", "Iphone 15", "Xiaomi Redmi Note 11"])
+    return Category("Смартфоны",
+                    "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
+                    ["Samsung Galaxy C23 Ultra", "Iphone 15", "Xiaomi Redmi Note 11"])
 
 
 def test_classes_product(class_product):
