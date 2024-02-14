@@ -1,16 +1,8 @@
 class Category:
-    name: str
-    description: str
-    _products: list
-    number_categories = 0
-    number_products = 0
-
-    def __init__(self, name, description, _products):
+    def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self._products = _products
-        Category.number_categories += 1
-        Category.number_products += len(self._products)
+        self._products = products
 
     def get_name(self):
         return self.name
@@ -28,4 +20,9 @@ class Category:
 
     @products.setter
     def products(self, value):
-        self._products.append(value)
+        self._products.append({
+            "name": value[0],
+            "description": value[1],
+            "price": value[2],
+            "quantity": value[3]
+        })
