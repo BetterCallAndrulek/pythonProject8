@@ -1,13 +1,8 @@
 class Product:
-    name: str
-    description: str
-    price: float
-    quantity: int
-
-    def __init__(self, name, description, _price, quantity):
+    def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self._price = _price
+        self._price = price
         self.quantity = quantity
 
     def get_name(self):
@@ -40,7 +35,15 @@ class Product:
         return self.quantity
 
     @classmethod
-    def create_product(cls, product):
-        if product["name"] == Product.name:
-            Product.quantity += product["quantity"]
-            return product
+    def create_product(cls):
+        new_product = {
+            "name": "HUAWEI P60",
+            "description": "Инновационный изогнутый экран",
+            "price": 62_000.0,
+            "quantity": 19
+        }
+        name, description, price, quantity = \
+            (
+                new_product["name"], new_product["description"], new_product["price"], new_product["quantity"]
+            )
+        return cls(name, description, price, quantity)
