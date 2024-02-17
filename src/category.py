@@ -21,7 +21,7 @@ class Category:
     def products(self):
         product_info = []
         for prod in self.__products:
-            product_info.append(f'{prod.name}, {int(prod.price} руб. Остаток: {prod.quantity} шт.')
+            product_info.append(f'{prod.name}, int'{prod.price} руб. Остаток: {prod.quantity} шт.')
         return product_info
 
     def __len__(self):
