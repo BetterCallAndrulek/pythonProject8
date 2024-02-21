@@ -1,17 +1,8 @@
-import pytest
-from src.category import Category
+def test_classes_product(class_category):
+    assert class_category.get_name() == "Смартфоны"
+    assert class_category.get_description() == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
+    assert class_category.products == ("Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
+                                       "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+                                       "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n")
 
-
-@pytest.fixture()
-def class_product():
-    return Category("Смартфоны",
-                    "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
-                    ["Samsung Galaxy C23 Ultra", "Iphone 15", "Xiaomi Redmi Note 11"])
-
-
-def test_classes_product(class_product):
-    assert class_product.get_name() == "Смартфоны"
-    assert class_product.get_description() == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
-    assert class_product.get_products() == ["Samsung Galaxy C23 Ultra", "Iphone 15", "Xiaomi Redmi Note 11"]
-    assert class_product.number_categories == 1
-    assert class_product.number_products == 3
+    class_category.add_products(("Iphone 15", "512GB, Gray space", 210000.0, 8))

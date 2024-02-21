@@ -35,13 +35,7 @@ class Product:
         return self.quantity
 
     @classmethod
-    def create_product(cls):
-        new_product = {
-            "name": "HUAWEI P60",
-            "description": "Инновационный изогнутый экран",
-            "price": 62_000.0,
-            "quantity": 19
-        }
+    def create_product(cls, new_product):
         name, description, price, quantity = \
             (
                 new_product["name"], new_product["description"], new_product["price"], new_product["quantity"]
