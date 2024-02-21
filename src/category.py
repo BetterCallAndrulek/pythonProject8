@@ -24,8 +24,8 @@ class Category:
             product_info.append(f'{prod.name}, int'{prod.price} руб. Остаток: {prod.quantity} шт.')
         return product_info
 
-    def __len__(self):
-        return len(self.__products)
+        def __len__(self):
+            return len(self.__products)
 
-    def __str__(self):
-        return f'{self.name}, количество продуктов: {self.__len__()} шт.'
+        def __str__(self):
+            return f'{self.name}, количество продуктов: {self.__len__()} шт.'
