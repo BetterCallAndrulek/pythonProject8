@@ -5,9 +5,6 @@ from src.product import Product
 
 
 def main():
-    """
-    :return: Списки с информацией о категориях и товарах
-    """
     with open(FILE_JSON) as file:
         raw_json = file.read()
         data = json.loads(raw_json)
