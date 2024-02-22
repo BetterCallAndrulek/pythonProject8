@@ -1,43 +1,45 @@
 class Product:
+    
+    name: str
+    description: str
+    price: float
+    quantity: int
+
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self._price = price
+        self.__price = price
         self.quantity = quantity
 
-    def get_name(self):
-        return self.name
+    @classmethod
+    def new_product(cls, product_data):
+        return cls(**product_data)
 
-    def get_description(self):
-        return self.description
+    def cor_product(self, product_data):
+        new_product = Product.new_product(product_data)
+        if new_product.name == self.name:
+            self.quantity += new_product.quantity
+            if self.price <= new_product.price:
+                self.price = new_product.price
 
     @property
     def price(self):
-        return self._price
+        return self.__price
 
     @price.setter
-    def price(self, value):
-        if value <= 0:
-            print("Цена введена не корректно")
-        elif value < self._price:
-            while True:
-                answer = input("Новая цена ниже чем старая, вы уверены что хотите изменить цену (y/n): ").lower()
-                if answer == "y":
-                    self._price = value
-                    break
-                elif answer == "n":
-                    self._price = self._price
-                    break
-        else:
-            self._price = value
+    def price(self, new_price):
+        if new_price <= 0:
+            print("Введена некорректная цена")
+        elif 0 < new_price < self.__price:
+            enter = input("Снизить стоимость товара? (y/n): ").lower()
+            if enter == "y":
+                self.__price = new_price
+        elif new_price > self.__price:
+            self.__price = new_price
 
-    def get_quantity_in_stock(self):
-        return self.quantity
+    def __str__(self):
+        return f'{self.name}, {int(self.__price)} руб. Остаток: {self.quantity} шт.'
 
-    @classmethod
-    def create_product(cls, new_product):
-        name, description, price, quantity = \
-            (
-                new_product["name"], new_product["description"], new_product["price"], new_product["quantity"]
-            )
-        return cls(name, description, price, quantity)
+    def __add__(self, product):
+        return (self.__price * self.quantity) + (product.__price * product.quantity)
+
