@@ -1,14 +1,33 @@
-from src.product import Product
+import pytest
+
+import Product
 
 
-def test_classes_product(class_product, class_category):
-    assert class_product.get_name() == "55\" QLED 4K"
-    assert class_product.get_description() == "Фоновая подсветка"
-    assert class_product.price == 123000.0
-    assert class_product.get_quantity_in_stock() == 7
-    assert Product.create_product({
-        "name": "HUAWEI P60",
-        "description": "Инновационный изогнутый экран",
-        "price": 62_000.0,
-        "quantity": 19
-    })
+@pytest.fixture
+def product_fixture():
+    return (Product('Молоко', 'ценный пищевой продукт', 100.05, 5),
+            Product('Молоко', 'ценный пищевой продукт', 150, 4),
+            Product('Молоко', 'ценный пищевой продукт', 100, 4))
+
+
+def test_product(product_fixture):
+    assert product_fixture[0].name == 'Молоко'
+    assert product_fixture[0].description == 'ценный пищевой продукт'
+    assert product_fixture[0].price == 100.05
+    assert product_fixture[0].quantity == 5
+    product_fixture[0].price = 150
+    assert product_fixture[0].price == 150
+    product_fixture[0].price = 0
+    assert product_fixture[0].price == 150
+    product_fixture[0].price = 100
+    assert product_fixture[0].price == 100
+    product_fixture[0].cor_product({
+        "name": 'Молоко',
+        "description": 'ценный пищевой продукт',
+        "price": 150,
+        "quantity": 5
+      })
+    assert product_fixture[0].quantity == 10
+    assert product_fixture[0].price == 150
+    assert str(product_fixture[0]) == 'Молоко, 150 руб. Остаток: 10 шт.'
+    assert product_fixture[0].__add__(product_fixture[1]) == 2100
