@@ -17,15 +17,15 @@ class Category:
         self.__products.append(product)
         Category.total_number_of_unique_products += 1
 
-    @property
+@property
     def products(self):
         product_info = []
         for prod in self.__products:
-            product_info.append(f'{prod.name}, int'{prod.price} руб. Остаток: {prod.quantity} шт.')
+            product_info.append(f'{prod["name"]}, {int(prod["price"])} руб. Остаток: {prod["quantity"]} шт.')
         return product_info
 
-        def __len__(self):
+    def __len__(self):
             return len(self.__products)
 
-        def __str__(self):
+    def __str__(self):
             return f'{self.name}, количество продуктов: {self.__len__()} шт.'
