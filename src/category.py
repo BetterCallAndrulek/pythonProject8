@@ -17,7 +17,7 @@ class Category:
         self.__products.append(product)
         Category.total_number_of_unique_products += 1
 
-@property
+    @property
     def products(self):
         product_info = []
         for prod in self.__products:
