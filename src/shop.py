@@ -1,5 +1,5 @@
 class Shop:
-    def __init__(self, category):
+    def __init__(self, category: Category):
         self.category = category
 
     def __iter__(self):
@@ -7,8 +7,8 @@ class Shop:
         return self
 
     def __next__(self):
-        if self.current + 1 < len(self.category['products']):
-            result = self.category['products'][self.current]
+        if self.current + 1 < len(self.category.products):
+            result = self.category.products[self.current]
             self.current += 1
             return result
         else:

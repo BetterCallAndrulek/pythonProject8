@@ -5,6 +5,7 @@ from src.product import Product
 
 
 def main():
+
     with open(FILE_JSON) as file:
         raw_json = file.read()
         data = json.loads(raw_json)
@@ -18,6 +19,3 @@ def main():
             categories.append(category)
         print(categories)
 
-
-if __name__ == '__main__':
-    main()
