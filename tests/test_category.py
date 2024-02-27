@@ -15,4 +15,3 @@ def test_init_category(category, smartphone, shop):
 
     with pytest.raises(TypeError):
         category.add_product(shop)
-
