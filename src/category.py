@@ -10,11 +10,6 @@ class Category:
         Category.total_number_of_unique_products += len(self.__products)
 
     def add_product(self, product):
-        if isinstance(product, Product):
-            self.__products.append(product)
-            Category.total_number_of_unique_products += 1
-            return self.__products
-        raise ValueError('Добавлять можно только объекты Product и дочерние от них.')
         if not isinstance(product, Product):
             raise TypeError('Добавлять можно только объекты Product и дочерние от них.')
         Category.total_number_of_unique_products += 1
