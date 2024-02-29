@@ -19,3 +19,7 @@ def main():
             categories.append(category)
         print(categories)
 
+
+if __name__ == '__main__':
+    main()
+

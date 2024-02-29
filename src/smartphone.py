@@ -1,6 +1,6 @@
 from src.product import Product
-class Smartphone(Product):
-    """ Класс, описывающий информацию о смартфонах"""
+class Smartphone(ProductsABC, ObjectMixin):
+
 
     def __init__(self,
                  name: str,
@@ -15,3 +15,7 @@ class Smartphone(Product):
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
+
+    def keeping(self):
+
+        print(f'Смартфон хранится в сухом месте при комнатной температуре')

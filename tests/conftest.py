@@ -18,6 +18,11 @@ def product2():
 
 
 @pytest.fixture
+def product3():
+    return Product("Iphone 10", "512GB, Gray space", 210000.0, 8, 'white')
+
+
+@pytest.fixture
 def products(product1, product2):
     return [product1, product2]
 
@@ -48,3 +53,8 @@ def smartphone():
 @pytest.fixture
 def shop(category):
     return Shop(category)
+
+
+@pytest.fixture
+def order():
+    return Order('OnePlus 10Pro 12/256Gb Volcan Bl', 15, 150000)
