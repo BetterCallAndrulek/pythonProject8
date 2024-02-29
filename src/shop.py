@@ -5,7 +5,7 @@ class Shop:
     def __iter__(self):
         self.current = -1
         return self
-
+        
     def __next__(self):
         if self.current + 1 < len(self.category.products):
             result = self.category.products[self.current]

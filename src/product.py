@@ -1,9 +1,12 @@
 class Product(ProductsABC, ObjectMixin):
 
-
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str):
-        super().__init__(name, description, price, quantity, color)
+        super().__init__()
+        self.name = name
+        self.description = description
         self.__price = price
+        self.quantity = quantity
+        self.color = color
 
     @property
     def price(self):
@@ -27,7 +30,7 @@ class Product(ProductsABC, ObjectMixin):
 
     def cor_product(self, product_data):
 
-        new_product = Product.new_product(product_data)
+        new_product = self.__class__.new_product(product_data)
         if new_product.name == self.name:
             self.quantity += new_product.quantity
             if self.price <= new_product.price:
@@ -42,7 +45,3 @@ class Product(ProductsABC, ObjectMixin):
         if type(product) != type(self):
             raise TypeError('Разные классы')
         return (self.__price * self.quantity) + (product.__price * product.quantity)
-
-    def keeping(self):
-
-        print(f'Продукты, в основном, хранятся в холодильнике')
