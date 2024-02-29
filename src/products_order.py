@@ -1,20 +1,10 @@
 class ProductsABC(ABC):
 
 
-    def __init__(self,
-                 name: str,
-                 description: str,
-                 price: float,
-                 quantity: int,
-                 color: str):
-        self.name = name
-        self.description = description
-        self.__price = price
-        self.quantity = quantity
-        self.color = color
+    def __init__(self):
         super().__init__()
 
+    @classmethod
     @abstractmethod
-    def keeping(self):
-
+    def new_product(cls, product_data):
         pass
