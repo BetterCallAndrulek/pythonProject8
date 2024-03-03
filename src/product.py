@@ -1,9 +1,6 @@
 from object_mixin import ObjectMixin
 from products_order import ProductsABC
-
-
-class Product(ObjectMixin, ProductsABC):
-
+class Product(ProductsABC, ObjectMixin):
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str):
         self.name = name
         self.description = description

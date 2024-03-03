@@ -1,9 +1,12 @@
 import pytest
-from src.category import Category
-from src.product import Product
-from src.grass import LawnGrass
-from src.shop import Shop
-from src.smartphone import Smartphone
+
+from category import Category
+from grass import LawnGrass
+from order import Order
+from product import Product
+from product_error import ProductError
+from shop import Shop
+from smartphone import Smartphone
 
 
 @pytest.fixture
@@ -23,6 +26,11 @@ def product3():
 
 
 @pytest.fixture
+def product4():
+    return Product("Iphone 10", "512GB, Gray space", 210000.0, 0, 'white')
+
+
+@pytest.fixture
 def products(product1, product2):
     return [product1, product2]
 
@@ -32,6 +40,13 @@ def category(products):
     return Category("Смартфоны",
                     "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
                     products)
+
+
+@pytest.fixture
+def category1(products):
+    return Category("Смартфоны",
+                    "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
+                    [])
 
 
 @pytest.fixture
