@@ -1,3 +1,5 @@
+from category import Category
+
 class Shop:
     def __init__(self, category: Category):
         self.category = category
