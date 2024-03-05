@@ -6,20 +6,21 @@ from src.product import Product
 
 def main():
 
-    with open(FILE_JSON) as file:
-        raw_json = file.read()
-        data = json.loads(raw_json)
-        categories = []
-        for cat_data in data:
-            products_instances = []
-            for product_data in cat_data['products']:
-                new_product = Product.new_product(product_data)
-                products_instances.append(new_product)
-            category = Category(cat_data['name'], cat_data['description'], products_instances)
-            categories.append(category)
-        print(categories)
+    with open('products.json', 'r', encoding='UTF-8') as file:
+        data = json.load(file)
+
+    categories = []
+
+    for category_data in data:
+        category = Category(category_data['name'], category_data['description'])
+        for product_data in category_data['products']:
+            product = Product(product_data['name'], product_data['description'], product_data['price'], product_data['quantity'])
+            category.add_product(product)
+
+        print(f'{category.name}\n{category.description}\n{category.products}')
+        print(category)
+        categories.append(category)
 
 
 if __name__ == '__main__':
     main()
-
